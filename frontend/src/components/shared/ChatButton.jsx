@@ -7,6 +7,7 @@ import { io } from 'socket.io-client';
 import { toast } from 'sonner';
 import { fetchChatHistory, removeConversation } from '../../redux/chatSlice';
 
+
 const ChatButton = ({ userType }) => {
   const currentUser = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -248,7 +249,8 @@ const ChatButton = ({ userType }) => {
 
   const renderMessageContent = (message) => {
     if (message.deleted) {
-      return <span className="italic text-gray-400">Message deleted</span>;
+      return <span className="font-bold text-white p-1 rounded-md italic">YOU DELETED THIS MESSAGE</span>;
+
     }
 
     if (message.fileUrl) {
@@ -562,7 +564,14 @@ const ChatButton = ({ userType }) => {
                             hour: '2-digit', 
                             minute: '2-digit' 
                           })}
-                          {message.edited && ' (edited)'}
+                         {message.edited && (
+  <span>
+    {' ('}
+    <span style={{ color: '#FFFFFF', fontWeight: '900', textTransform: 'uppercase' }}>EDITED</span>
+    {')'}
+  </span>
+)}
+
                         </div>
                       </div>
 
