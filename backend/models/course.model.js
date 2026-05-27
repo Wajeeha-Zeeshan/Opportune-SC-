@@ -54,7 +54,7 @@ const courseSchema = new mongoose.Schema({
     created_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        
     },
     enrollments: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -62,4 +62,4 @@ const courseSchema = new mongoose.Schema({
     }]
 }, { timestamps: true });
 
-export const Course = mongoose.model("Course", courseSchema); 
+export const Course = mongoose.model("Course", courseSchema);
